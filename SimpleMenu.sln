@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMenu.Domain", "SimpleMenu.Domain\SimpleMenu.Domain.csproj", "{5B74D194-5B0E-4003-9D86-571A8609BFCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMenu.AggregateSource", "SimpleMenu.AggregateSource\SimpleMenu.AggregateSource.csproj", "{5124C1D0-EDAE-4667-948C-1123A8863266}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B74D194-5B0E-4003-9D86-571A8609BFCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B74D194-5B0E-4003-9D86-571A8609BFCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B74D194-5B0E-4003-9D86-571A8609BFCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B74D194-5B0E-4003-9D86-571A8609BFCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5124C1D0-EDAE-4667-948C-1123A8863266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5124C1D0-EDAE-4667-948C-1123A8863266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5124C1D0-EDAE-4667-948C-1123A8863266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5124C1D0-EDAE-4667-948C-1123A8863266}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
