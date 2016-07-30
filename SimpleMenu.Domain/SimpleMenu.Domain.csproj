@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Product\Product.cs" />
-    <Compile Include="Product\Events\ProductCategoryChanged.cs" />
-    <Compile Include="Product\Events\ProductCreated.cs" />
-    <Compile Include="Product\ProductId.cs" />
-    <Compile Include="Product\Events\ProductNameChanged.cs" />
+    <Compile Include="Products\Product.cs" />
+    <Compile Include="Products\Events\ProductCategoryChanged.cs" />
+    <Compile Include="Products\Events\ProductCreated.cs" />
+    <Compile Include="Products\ProductId.cs" />
+    <Compile Include="Products\Events\ProductNameChanged.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

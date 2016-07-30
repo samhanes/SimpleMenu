@@ -1,6 +1,7 @@
 ﻿using System;
+using SimpleMenu.AggregateSource;
 
-namespace SimpleMenu.Domain
+namespace SimpleMenu.Domain.Products
 {
     public class ProductId : GuidAggregateRootEntityId
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleMenu.Domain
+namespace SimpleMenu.Domain.Products.Events
 {
     public class ProductCreated
     {

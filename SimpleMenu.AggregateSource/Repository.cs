@@ -38,7 +38,7 @@ namespace SimpleMenu.AggregateSource
         
         public void Save(AggregateRootEntity root)
         {
-            using (var stream = _eventStore.OpenStream(root.Id.ToGuid()))
+            using (var stream = _eventStore.OpenStream(root.AggregateRootId.ToGuid()))
             {
                 foreach (var ev in root.GetChanges())
                 {

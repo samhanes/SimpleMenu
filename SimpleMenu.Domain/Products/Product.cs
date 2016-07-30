@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using SimpleMenu.AggregateSource;
+using SimpleMenu.Domain.Products.Events;
 
-namespace SimpleMenu.Domain
+namespace SimpleMenu.Domain.Products
 {
     public class Product : AggregateRootEntity
     {
@@ -11,6 +12,11 @@ namespace SimpleMenu.Domain
             Register<ProductCreated>(Apply);
             Register<ProductNameChanged>(Apply);
             Register<ProductCategoryChanged>(Apply);
+        }
+
+        public Product(ProductId id, string name, string category) : this()
+        {
+            ApplyChange(new ProductCreated(id, name, category, DateTime.UtcNow));
         }
 
         public Product(IEnumerable<object> events) : this()
@@ -24,11 +30,6 @@ namespace SimpleMenu.Domain
         public string Name { get; private set; }
         public string Category { get; private set; }
         public DateTime CreatedDateTime { get; private set; }
-
-        public static Product Create(ProductId id, string name, string category)
-        {
-            return new Product(new[] {new ProductCreated(id, name, category, DateTime.UtcNow)});
-        }
 
         public void UpdateName(string newName)
         {

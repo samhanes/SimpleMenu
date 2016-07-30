@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMenu.Domain", "Simple
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMenu.AggregateSource", "SimpleMenu.AggregateSource\SimpleMenu.AggregateSource.csproj", "{5124C1D0-EDAE-4667-948C-1123A8863266}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMenu.App", "SimpleMenu.App\SimpleMenu.App.csproj", "{35A9A19B-8886-407F-9D5A-CD22ACB41317}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5124C1D0-EDAE-4667-948C-1123A8863266}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5124C1D0-EDAE-4667-948C-1123A8863266}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5124C1D0-EDAE-4667-948C-1123A8863266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35A9A19B-8886-407F-9D5A-CD22ACB41317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A9A19B-8886-407F-9D5A-CD22ACB41317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A9A19B-8886-407F-9D5A-CD22ACB41317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A9A19B-8886-407F-9D5A-CD22ACB41317}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
