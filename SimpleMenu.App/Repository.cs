@@ -1,17 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using NEventStore;
+using SimpleMenu.AggregateSource;
 
-namespace SimpleMenu.AggregateSource.Persistence
+namespace SimpleMenu.App
 {
+    public class SimpleEventBus : IEventBus
+    {
+        public void Publish(IEnumerable<object> events)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class Repository : IRepository
     {
         private readonly IStoreEvents _eventStore;
+        private readonly IEventBus _bus;
 
-        public Repository(IStoreEvents eventStore)
+        public Repository(IStoreEvents eventStore, IEventBus bus)
         {
             if (eventStore == null) throw new ArgumentNullException(nameof(eventStore));
             _eventStore = eventStore;
+            _bus = bus;
         }
         
         public TAggregateRoot Get<TAggregateRoot>(AggregateRootEntityId identifier)
@@ -38,23 +51,28 @@ namespace SimpleMenu.AggregateSource.Persistence
         
         public void Save(AggregateRootEntity root)
         {
-            using (var stream = _eventStore.OpenStream(root.AggregateRootId.ToGuid()))
+            if (!root.HasChanges())
+                return;
+
+            var eventsToSave = root.GetChanges().ToList();
+            PersistEvents(root.AggregateRootId.ToGuid(), eventsToSave);
+            
+            _bus.Publish(eventsToSave);
+            root.ClearChanges();
+        }
+
+        private void PersistEvents(Guid persistenceId, IEnumerable<object> eventsToSave)
+        {
+            using (var scope = new TransactionScope())
+            using (var stream = _eventStore.OpenStream(persistenceId))
             {
-                foreach (var ev in root.GetChanges())
+                foreach (var ev in eventsToSave)
                 {
                     stream.Add(new EventMessage { Body = ev });
                 }
                 stream.CommitChanges(Guid.NewGuid());
-                root.ClearChanges();
+                scope.Complete();
             }
-        }
-    }
-
-    public class AggregateNotFoundException : Exception
-    {
-        public AggregateNotFoundException(AggregateRootEntityId identifier, Type type)
-            : base($"Aggregate of type '{type.Name}' with id '{identifier}' not found.")
-        {
         }
     }
 }

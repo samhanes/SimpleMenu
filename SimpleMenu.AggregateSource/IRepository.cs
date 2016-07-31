@@ -1,4 +1,4 @@
-namespace SimpleMenu.AggregateSource.Persistence
+namespace SimpleMenu.AggregateSource
 {
     public interface IRepository
     {
