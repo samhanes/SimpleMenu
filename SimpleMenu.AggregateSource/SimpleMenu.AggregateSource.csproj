@@ -48,14 +48,13 @@
     <Compile Include="AggregateRootEntity.cs" />
     <Compile Include="AggregateRootEntityId.cs" />
     <Compile Include="Entity.cs" />
-    <Compile Include="EntityId.cs" />
     <Compile Include="EventRecorder.cs" />
     <Compile Include="EventRouter.cs" />
     <Compile Include="GuidAggregateRootEntityId.cs" />
     <Compile Include="IEventRouter.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
+    <Compile Include="Persistence\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

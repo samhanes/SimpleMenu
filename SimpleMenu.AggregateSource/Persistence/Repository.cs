@@ -2,7 +2,7 @@
 using System.Linq;
 using NEventStore;
 
-namespace SimpleMenu.AggregateSource
+namespace SimpleMenu.AggregateSource.Persistence
 {
     public class Repository : IRepository
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SimpleMenu.AggregateSource
 {
-    public class EventRecorder : IEnumerable<object>
+    internal class EventRecorder : IEnumerable<object>
     {
         private readonly List<object> _recorded;
 

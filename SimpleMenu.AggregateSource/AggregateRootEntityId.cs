@@ -2,7 +2,7 @@ using System;
 
 namespace SimpleMenu.AggregateSource
 {
-    public abstract class AggregateRootEntityId : EntityId
+    public abstract class AggregateRootEntityId
     {
         public abstract Guid ToGuid();
     }

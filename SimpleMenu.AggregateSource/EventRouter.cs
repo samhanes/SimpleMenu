@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SimpleMenu.AggregateSource
 {
-    public class EventRouter : IEventRouter
+    internal class EventRouter : IEventRouter
     {
         private readonly Dictionary<Type, Action<object>> _handlers;
 

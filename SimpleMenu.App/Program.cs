@@ -4,6 +4,7 @@ using System.Transactions;
 using NEventStore;
 using NEventStore.Persistence.Sql.SqlDialects;
 using SimpleMenu.AggregateSource;
+using SimpleMenu.AggregateSource.Persistence;
 using SimpleMenu.Domain;
 using SimpleMenu.Domain.Products;
 
