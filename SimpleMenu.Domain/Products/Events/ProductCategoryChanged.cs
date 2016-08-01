@@ -1,6 +1,6 @@
 ﻿namespace SimpleMenu.Domain.Products.Events
 {
-    public class ProductCategoryChanged
+    public class ProductCategoryChanged : ProductEvent
     {
         public ProductCategoryChanged(ProductId id, string newCategory)
         {

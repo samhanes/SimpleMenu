@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Products\Events\ProductEvent.cs" />
     <Compile Include="Products\Product.cs" />
     <Compile Include="Products\Events\ProductCategoryChanged.cs" />
     <Compile Include="Products\Events\ProductCreated.cs" />

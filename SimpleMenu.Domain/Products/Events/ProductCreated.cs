@@ -2,7 +2,7 @@
 
 namespace SimpleMenu.Domain.Products.Events
 {
-    public class ProductCreated
+    public class ProductCreated : ProductEvent
     {
         public ProductCreated(ProductId id, string name, string category, DateTime dateTimeCreated)
         {

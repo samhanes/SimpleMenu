@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Net.Http.Headers;
+using System.Linq;
 using System.Transactions;
 using NEventStore;
 using NEventStore.Persistence.Sql.SqlDialects;
-using SimpleMenu.AggregateSource;
-using SimpleMenu.Domain;
 using SimpleMenu.Domain.Products;
 
 namespace SimpleMenu.App
@@ -13,20 +11,26 @@ namespace SimpleMenu.App
     {
         private static void Main(string[] args)
         {
+            SimpleEventBus.Register(new ProductInfoHandler());
+            var productId = new ProductId(Guid.NewGuid());
+
             using (var scope = new TransactionScope())
             using (var store = WireupEventStore())
             {
-                var repository = new Repository(store);
-                var productId = new ProductId(Guid.NewGuid());
-                var product = new Product(productId, "Pizza", "Foods");
+                var bus = new SimpleEventBus();
+                var repository = new Repository(store, bus);
+
+                var product = new Product(productId, "Piza", "Foods");
                 repository.Save(product);
 
                 product = repository.Get<Product>(productId);
-                product.UpdateName("Pizznizza");
+                product.UpdateName("Pizza");
                 repository.Save(product);
 
                 scope.Complete();
             }
+
+            var model = ReadModelStore.ProductInfo.First(pi => pi.Id == productId);
         }
 
         private static IStoreEvents WireupEventStore()

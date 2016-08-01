@@ -7,14 +7,6 @@ using SimpleMenu.AggregateSource;
 
 namespace SimpleMenu.App
 {
-    public class SimpleEventBus : IEventBus
-    {
-        public void Publish(IEnumerable<object> events)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public class Repository : IRepository
     {
         private readonly IStoreEvents _eventStore;
@@ -57,7 +49,8 @@ namespace SimpleMenu.App
             var eventsToSave = root.GetChanges().ToList();
             PersistEvents(root.AggregateRootId.ToGuid(), eventsToSave);
             
-            _bus.Publish(eventsToSave);
+            foreach (var ev in eventsToSave)
+                _bus.Publish(ev);
             root.ClearChanges();
         }
 
