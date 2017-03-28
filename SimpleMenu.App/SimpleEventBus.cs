@@ -8,9 +8,9 @@ namespace SimpleMenu.App
 {
     public class SimpleEventBus : IEventBus
     {
-        private static readonly Dictionary<Type, List<IEventHandler>> Handlers = new Dictionary<Type, List<IEventHandler>>();
+        private readonly Dictionary<Type, List<IEventHandler>> _handlers = new Dictionary<Type, List<IEventHandler>>();
 
-        public static void Register<TEvent>(IEventHandler<TEvent> handler)
+        public void Register<TEvent>(IEventHandler<TEvent> handler)
         {
             var eventTypes = Assembly.GetAssembly(typeof(TEvent)).GetTypes()
                 .Where(t => !t.IsAbstract)
@@ -20,21 +20,21 @@ namespace SimpleMenu.App
                 RegisterHandler(eventType, handler);
         }
 
-        private static void RegisterHandler(Type eventType, IEventHandler handler)
+        private void RegisterHandler(Type eventType, IEventHandler handler)
         {
-            if (!Handlers.ContainsKey(eventType))
-                Handlers.Add(eventType, new List<IEventHandler>());
+            if (!_handlers.ContainsKey(eventType))
+                _handlers.Add(eventType, new List<IEventHandler>());
 
-            Handlers[eventType].Add(handler);
+            _handlers[eventType].Add(handler);
         }
 
         public void Publish(object ev)
         {
             var eventType = ev.GetType();
-            if (!Handlers.ContainsKey(eventType))
+            if (!_handlers.ContainsKey(eventType))
                 return;
 
-            foreach (var handler in Handlers[eventType])
+            foreach (var handler in _handlers[eventType])
             {
                 handler.Handle(ev);
             }

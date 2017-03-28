@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Transactions;
 using NEventStore;
 using SimpleMenu.AggregateSource;
 
@@ -56,7 +55,6 @@ namespace SimpleMenu.App
 
         private void PersistEvents(Guid persistenceId, IEnumerable<object> eventsToSave)
         {
-            using (var scope = new TransactionScope())
             using (var stream = _eventStore.OpenStream(persistenceId))
             {
                 foreach (var ev in eventsToSave)
@@ -64,7 +62,6 @@ namespace SimpleMenu.App
                     stream.Add(new EventMessage { Body = ev });
                 }
                 stream.CommitChanges(Guid.NewGuid());
-                scope.Complete();
             }
         }
     }
